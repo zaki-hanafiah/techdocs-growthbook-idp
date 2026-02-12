@@ -9,6 +9,7 @@ metadata:
     the GrowthBook SDK connection endpoint.
   annotations:
     backstage.io/techdocs-ref: dir:.
+    backstage.io/source-location: https://github.com/zaki-hanafiah/techdocs-growthbook-idp/tree/main/
     growthbook.io/enabled: "true"
     growthbook.io/env: "prod"
   tags:
