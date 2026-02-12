@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: growthbook-feature-flags
+  title: Growthbook - Feature Flags
+  description: >
+    GrowthBook feature flags registry. Displays all feature flags and their
+    currently served default values (per environment) sourced directly from
+    the GrowthBook SDK connection endpoint.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    growthbook.io/enabled: "true"
+    growthbook.io/env: "prod"
+  tags:
+    - feature-flags
+    - growthbook
+    - platform
+  links:
+    - url: https://docs.growthbook.io
+      title: GrowthBook Documentation
+      icon: docs
+spec:
+  type: service
+  owner: platform-team
+  lifecycle: production
+  system: platform
