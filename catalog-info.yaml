@@ -8,7 +8,7 @@ metadata:
     currently served default values (per environment) sourced directly from
     the GrowthBook SDK connection endpoint.
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/zaki-hanafiah/techdocs-growthbook-idp/tree/main/
+    backstage.io/techdocs-ref: dir:.
     growthbook.io/enabled: "true"
     growthbook.io/env: "prod"
   tags:
