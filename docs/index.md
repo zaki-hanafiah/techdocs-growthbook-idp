@@ -1,5 +1,8 @@
 # Growthbook - Feature Flags
 
+<img width="1749" height="321" alt="image" src="https://github.com/user-attachments/assets/82591113-ed39-48ef-b28d-f2c511b77897" />
+
+
 Welcome to the GrowthBook feature flags catalog page.
 
 This entity provides a **live view of all feature flags** and their currently served default values
@@ -34,19 +37,3 @@ This entity provides a **live view of all feature flags** and their currently se
 | Lifecycle | `production` |
 | Type | `service` |
 
----
-
-## How the Feature Flags tab works
-
-The **Feature Flags** tab in Backstage reads data from the Backstage backend plugin
-(`growthbook-flags-backend`). The backend fetches the GrowthBook SDK connection
-endpoint payload every ~60 seconds (memory-cached) and normalises each flag into:
-
-```
-key         — feature flag identifier
-type        — boolean | number | string | json | null
-valuePreview — single-line, truncated for the table
-valuePretty  — prettified JSON shown in the detail drawer
-```
-
-Click any row to open the detail drawer and see the full prettified value.
