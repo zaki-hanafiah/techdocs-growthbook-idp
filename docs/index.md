@@ -20,9 +20,9 @@ This entity provides a **live view of all feature flags** and their currently se
 
 ## Quick links
 
-- [GrowthBook Cloud UI](https://app.growthbook.io) — flag management console
+- [GrowthBook Dashboard](#) — feature flag management console / dashboard
 - [GrowthBook OSS Docs](https://docs.growthbook.io) — upstream documentation
-- Internal Slack: `#platform-feature-flags`
+- Internal Slack: `#fnx-growthbook-alerts`
 
 ---
 
