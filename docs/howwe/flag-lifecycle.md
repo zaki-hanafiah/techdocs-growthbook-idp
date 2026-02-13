@@ -17,7 +17,6 @@ and prevents "flag debt" from accumulating.
 |---|---|---|
 | **Draft** | Created, not yet enabled in any environment | Feature exists, all envs toggled off |
 | **Active** | Enabled and routing traffic (toggle or rollout) | Enabled in ≥1 environment |
-| **Experiment** | Running an A/B test with tracked metrics | Active + experiment rule present |
 | **Rolled Out** | Feature is at 100 % for all users | Boolean `true` / full rollout |
 | **Cleaned Up** | Flag removed from code and archived in GrowthBook | Archived |
 
@@ -45,14 +44,6 @@ and in the codebase.
    - Archived features are hidden from the main list but retained for audit.
 4. Create a follow-up ticket if DB migrations or other cleanup is needed.
 
----
-
-## Experiment flags — special rules
-
-Experiment flags MUST NOT be cleaned up while:
-- The experiment is still running (active traffic split).
-- Analysis is in progress (wait for a stat-sig result).
-- The losing variant's code is still reachable in production (safety window: 1 release cycle).
 
 ---
 
