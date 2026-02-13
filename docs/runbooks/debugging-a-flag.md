@@ -119,4 +119,4 @@ If you cannot resolve the issue after the steps above:
    - The raw SDK payload for the affected flag (`curl` output from step 2).
    - Backstage backend logs from step 3.
    - Application SDK version.
-2. Post in `#platform-feature-flags` with the collected info.
+2. Post in `#fnx-growthbook` with the collected info.
