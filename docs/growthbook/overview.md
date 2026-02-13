@@ -1,7 +1,7 @@
 # GrowthBook Overview
 
-GrowthBook is an open-source feature flagging and A/B testing platform.
-It is available as a **self-hosted** OSS deployment or as a **managed cloud** service.
+GrowthBook is an open-source feature flagging and experimentation platform.
+It is available as a **self-hosted** OSS deployment or as a **managed cloud** service. We are currently using the self-hosted deployment as our service.
 
 ---
 
@@ -14,10 +14,10 @@ per user, environment, or percentage of traffic.
 
 Every feature has:
 
-- A **key** — the unique identifier used in SDK calls (e.g. `new-checkout-flow`)
+- A **key** — the unique identifier used in SDK calls (e.g. `SPECIAL_BANNER`)
 - A **value type** — `boolean`, `number`, `string`, or `json`
 - A **default value** — the fallback when no targeting rule matches
-- **Rules** — ordered list of targeting conditions (force, rollout, experiment)
+- **Rules** — ordered list of targeting conditions (force, experiment)
 
 ### Projects
 
