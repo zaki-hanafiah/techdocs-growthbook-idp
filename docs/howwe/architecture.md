@@ -4,35 +4,13 @@ This page describes how GrowthBook is deployed and integrated within our platfor
 
 ---
 
-## Deployment topology
+## Workflow / Deployment topology
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Kubernetes cluster                                         │
-│                                                             │
-│  ┌─────────────────┐        ┌──────────────────────────┐   │
-│  │  Application    │        │  GrowthBook              │   │
-│  │  Pods           │──────▶│  Service                  │   │
-│  │  (SDK clients)  │  SDK   │  growthbook.<ns>.svc:3100│   │
-│  └─────────────────┘  fetch └──────────────────────────┘   │
-│                                        │                    │
-│  ┌─────────────────┐                   │ /api/features/     │
-│  │  Backstage      │                   │  <sdkKey>          │
-│  │  Backend        │───────────────────┘                    │
-│  │  (plugin proxy) │                                        │
-│  └────────┬────────┘                                        │
-│           │  /api/growthbook-flags/flags?env=prod           │
-│  ┌────────▼────────┐                                        │
-│  │  Backstage      │                                        │
-│  │  Frontend       │                                        │
-│  │  (entity tab)   │                                        │
-│  └─────────────────┘                                        │
-└─────────────────────────────────────────────────────────────┘
-```
+<img width="779" height="391" alt="image" src="https://github.com/user-attachments/assets/9c9a25e5-5c9f-476b-b887-e65185620954" />
 
 ---
 
-## Data flow for the Feature Flags tab
+## Data flow for the Feature Flags tab (Backstage as Consumer)
 
 1. User opens the `growthbook-feature-flags` entity in Backstage.
 2. The **Frontend plugin** (`EntityGrowthbookFlagsContent`) calls
@@ -47,16 +25,14 @@ This page describes how GrowthBook is deployed and integrated within our platfor
 
 ## GrowthBook service
 
-GrowthBook is deployed as an internal Kubernetes service.
+GrowthBook is deployed as self-hosted service.
 
 | Property | Value |
 |---|---|
 | Namespace | `growthbook` (or as configured) |
-| Service DNS | `growthbook.<ns>.svc.cluster.local` |
-| Port | `3100` |
+| Service DNS | `/growthbook` |
+| Port | `3100 || as configured` |
 | Database | MongoDB (persistent volume) |
-
-The service is **not** exposed externally. Only workloads inside the cluster can reach it.
 
 ---
 
@@ -72,6 +48,4 @@ See [SDK Keys](../growthbook/sdk-keys.md) for the full setup.
 
 ## Flag evaluation in application code
 
-Application pods include the GrowthBook JavaScript/Go/Python SDK.
-Each SDK instance fetches the payload directly from the GrowthBook service (cluster-internal URL)
-and evaluates rules locally, meaning **zero network latency** per flag check after the initial fetch.
+Each SDK instance fetches the payload directly from the GrowthBook service and evaluates rules locally with in-memory caching, meaning **zero network latency** per flag check after the initial fetch.
