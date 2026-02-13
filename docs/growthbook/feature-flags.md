@@ -10,9 +10,9 @@ in your application without a code deploy.
 | Type | Example | Use case |
 |---|---|---|
 | `boolean` | `true` / `false` | Simple on/off toggles |
-| `number` | `42`, `3.14` | Numeric config (limits, thresholds) |
-| `string` | `"v2"` | Named variants, copy overrides |
-| `json` | `{"limit": 5, "mode": "fast"}` | Structured config objects |
+| `number` | `10`| Numeric config (limits, thresholds) |
+| `string` | `"some-text-here"` | Named variants, copy overrides |
+| `json` | `{"key": "value"}` | Structured config objects |
 
 ---
 
@@ -20,19 +20,9 @@ in your application without a code deploy.
 
 ```json
 {
-  "key": "new-checkout-flow",
+  "key": "SPECIAL_BANNER",
   "defaultValue": false,
-  "rules": [
-    {
-      "condition": { "betaUser": true },
-      "force": true
-    },
-    {
-      "variations": [false, true],
-      "weights": [0.5, 0.5],
-      "key": "new-checkout-flow-exp"
-    }
-  ]
+  "rules": []
 }
 ```
 
@@ -51,28 +41,7 @@ in your application without a code deploy.
 Returns a fixed value when the condition matches.
 
 ```json
-{ "condition": { "plan": "enterprise" }, "force": true }
-```
-
-### Rollout rule
-
-Gradually rolls out a value to a percentage of users (by hash).
-
-```json
-{ "force": true, "coverage": 0.10, "hashAttribute": "id" }
-```
-
-### Experiment rule
-
-Runs an A/B test, splitting traffic across variations.
-
-```json
-{
-  "variations": ["control", "treatment"],
-  "weights": [0.5, 0.5],
-  "key": "checkout-exp",
-  "hashAttribute": "id"
-}
+{ "condition": { "plan": "legacy" }, "force": true }
 ```
 
 ---
