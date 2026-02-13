@@ -17,13 +17,12 @@ Follow this guide when adding a new feature flag to GrowthBook.
 
 | Pattern | Example | When to use |
 |---|---|---|
-| `<area>-<feature>` | `checkout-promo-code` | Boolean flag for a feature area |
-| `<area>-<setting>-config` | `search-ranking-config` | JSON config object |
-| `<area>-<metric>-limit` | `api-rate-limit` | Numeric threshold |
-| `exp-<description>` | `exp-new-onboarding` | Active A/B experiment |
+| `<area>-<feature>` | `SPECIAL_BANNER` | Boolean flag for a internal features area |
+| `<area>-<setting>-config` | `REMOTE_CONFIG` | JSON config object |
+| `<area>-<metric>-limit` | `API_RATE_LIMIT` | Numeric threshold |
 
 Rules:
-- Lowercase, hyphen-separated.
+- UPPERCASE, hyphen-separated, SCREAMING.
 - No environment name in the key (environments are handled by GrowthBook, not the key).
 - Be descriptive; the key is visible in code and in the Backstage UI.
 
@@ -62,10 +61,10 @@ Add the SDK call in your service:
 
 ```typescript
 // boolean flag
-const isEnabled = gb.isOn("checkout-promo-code");
+const isEnabled = gb.isOn("SPECIAL_BANNER");
 
 // JSON config
-const config = gb.getFeatureValue("search-ranking-config", defaultConfig);
+const config = gb.getFeatureValue("REMOTE_CONFIG", defaultConfig);
 ```
 
 ### 5. Verify in Backstage
