@@ -12,6 +12,7 @@ metadata:
     backstage.io/source-location: url:https://github.com/zaki-hanafiah/techdocs-growthbook-idp/tree/main/
     growthbook.io/enabled: "true"
     growthbook.io/env: "prod"
+    backstage.io/kubernetes-id: growthbook-feature-flags
   tags:
     - feature-flags
     - growthbook
@@ -21,6 +22,10 @@ metadata:
       title: GrowthBook Documentation
       icon: docs
 spec:
+  providesApis:
+    - growthbook-api        # name of an API entity in your catalog
+  consumesApis:
+    - some-other-api
   type: service
   owner: platform-team
   lifecycle: production
